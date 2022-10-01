@@ -11,10 +11,11 @@ var restify = require('restify')
 
     server.listen(PORT, HOST, function () {
     console.log('Server %s listening at %s', server.name, server.url)
+    console.log('***********************')
     console.log('******Resources:*******')
     console.log('***********************')
     console.log(' /images')
-    console.log(' /images/imageId')  
+    console.log(' /images/:id')  
   })
 
   server
@@ -38,17 +39,17 @@ server.get('/images', function (req, res, next) {
 // Get a single image by their image id
 server.get('/images/:id', function (req, res, next) {
 
-    // Find a single user by their id within save
+    // Find a single image by their id within save
     imagesSave.findOne({ _id: req.params.id }, function (error, image) {
   
       // If there are any errors, pass them to next in the correct format
       if (error) return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)))
   
       if (image) {
-        // Send the user if no issues
+        // Send the image if no issues
         res.send(image)
       } else {
-        // Send 404 header if the user doesn't exist
+        // Send 404 header if the image doesn't exist
         res.send(404)
       }
     })
@@ -120,10 +121,10 @@ server.put('/images/:id', function (req, res, next) {
   })
 })
 
-// Delete user with the given id
+// Delete image with the given id
 server.del('/images/:id', function (req, res, next) {
 
-    // Delete the user with the persistence engine
+    // Delete the image with the persistence engine
     imagesSave.delete(req.params.id, function (error, image) {
   
       // If there are any errors, pass them to next in the correct format

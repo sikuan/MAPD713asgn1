@@ -2,10 +2,11 @@
   "name": "mapd713asgn1",
   "version": "1.0.0",
   "description": "MAPD 713 Assignment 1",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "nodemon": "^2.0.20",
+    "restify": "^4.3.4",
+    "save": "2.3.0"
   },
-  "author": "Cadence, Sao I Kuan",
-  "license": "ISC"
+  "main": "index.js",
+  "author": "Cadence, Sao I Kuan"
 }
