@@ -3,8 +3,9 @@ var PORT = 5000;
 var HOST = '127.0.0.1';
 
 var restify = require('restify')
-  // Create the restify server
-  , server = restify.createServer({ name: SERVER_NAME})
+
+    // Get a persistence engine for the users
+  , imagesSave = require('save')('images')
 
     // Create the restify server
     , server = restify.createServer({ name: SERVER_NAME})
@@ -33,6 +34,7 @@ server.get('/images', function (req, res, next) {
 
     // Return all of the images in the system
     res.send(images)
+    console.log("images GET: sending request")
   })
 })
 
@@ -53,6 +55,7 @@ server.get('/images/:id', function (req, res, next) {
         res.send(404)
       }
     })
+    console.log("images GET: sending request")
   })
 
   // Create a new image
@@ -86,6 +89,7 @@ server.post('/images', function (req, res, next) {
     // Send the image if no issues
     res.send(201, image)
   })
+  console.log("images GET: received request")
 })
 
 // Update an image by their id
