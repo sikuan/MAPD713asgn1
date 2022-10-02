@@ -155,3 +155,5 @@ server.del('/images/:id', function (req, res, next) {
   })
 
 
+  imagesSave.create(newImage={"name":"Candle",
+  "url":"http://candle.cloud.com", "size":"500kb"})
