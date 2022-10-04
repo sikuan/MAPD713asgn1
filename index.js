@@ -158,22 +158,16 @@ server.del('/images/:id', function (req, res, next) {
 server.del('/images', function (req, res, next) {
     
   // Del every entity within the given collection
-  imagesSave.delete({}, function (error, images) {
+  imagesSave.deleteMany({}, function (error, images) {
 
     // If there are any errors, pass them to next in the correct format
     if (error) return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)))
 
     // Return all of the images in the system
-    res.send(images)
+    res.send()
     console.log("images DEL: Deleted ALL")
   })
 })
-
-  imagesSave.create(newImage={"name":"Candle",
-  "url":"http://candle.cloud.com", "size":"500kb"})
-
-
-  imagesSave.delete('/images')
 
   imagesSave.create(newImage={"name":"Candle",
   "url":"http://candle.cloud.com", "size":"500kb"})
